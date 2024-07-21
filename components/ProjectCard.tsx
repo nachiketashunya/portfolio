@@ -12,28 +12,25 @@ import {
 } from "@/components/ui/card"
 
 
-const ProjectCard = ({ name, phase, stack, description, image }) => {
+const ProjectCard = ({ name, full_name, html_url, description }) => {
+  const stack = ['p', 'k'];
   return (
-    <Card className='px-2 py-2 flex flex-col justify-between w-full xl:max-w-[270px] min-h-[260px] rounded-[14px] cursor-pointer text-white bg-transparent border border-lime-300'>
+    <Card className='px-1 py-1 flex flex-col justify-between w-full xl:max-w-[400px] rounded-[14px] cursor-pointer text-white bg-transparent border border-lime-300 overflow-x-hidden'>
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
-        <CardDescription className='text-stone-400'>{description}</CardDescription>
+        <Link
+          href={html_url}
+          key={name}
+          className='text-xl hover:text-lime-300'
+        >
+          <CardTitle>{name}</CardTitle>
+        </Link>
+        <CardDescription className='text-stone-400 text-sm'>{description}</CardDescription>
       </CardHeader>
       <CardContent className='flex flex-row justify-start gap-2'>
-        {stack.map((s) => {
-          return <Stack svgFile={s}/>
+        {stack.map((s, index) => {
+          return <Stack key={index} svgFile={s}/>
         })}
       </CardContent>
-      <CardFooter>
-        <Link
-          href={phase}
-          key={name}
-          className='text-lime-300'
-
-        >
-          {phase}
-        </Link>
-      </CardFooter>
     </Card>
 
   );

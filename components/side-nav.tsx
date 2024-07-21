@@ -31,7 +31,7 @@ const SideNav = () => {
             }) } 
           >
             <Image
-              src={link.imgUrl}
+              src={ isActive && link.actUrl ? link.actUrl : link.imgUrl}
               alt={link.label}
               width={30}
               height={30}

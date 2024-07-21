@@ -13,5 +13,11 @@ export const sidebarLinks = [
         label: 'Contact',
         route: '/contact',
         imgUrl: '/icons/contact.svg'
+    },
+    {
+        label: 'Education',
+        route: '/education',
+        imgUrl: '/icons/edu-ol.svg',
+        actUrl: '/icons/edu.svg'
     }
 ]

@@ -2,61 +2,37 @@ import React from 'react';
 import ProjectCard from '@/components/ProjectCard';
 import styles from './projects.module.css';
 
-const projects = [
-  {
-    name: 'Rocetta',
-    phase: 'Building',
-    stack: ['python', 'opencv'],
-    description: 'Simplifying cloud complexity of existing infra platforms like AWS and GCP.',
-    image: '/images/rocetta.png'
-  },
-  {
-    name: 'Lyrical',
-    phase: 'Passive',
-    stack: ['python', 'opencv'],
-    description: 'AI-powered lyrics matching with human level accuracy and sub-second latency.',
-    image: '/images/lyrical.png'
-  },
-  {
-    name: 'Lyrical',
-    phase: 'Passive',
-    stack: ['python', 'opencv'],
-    description: 'AI-powered lyrics matching with human level accuracy and sub-second latency.',
-    image: '/images/lyrical.png'
-  },
-  {
-    name: 'Lyrical',
-    phase: 'Passive',
-    stack: ['python', 'opencv'],
-    description: 'AI-powered lyrics matching with human level accuracy and sub-second latency.',
-    image: '/images/lyrical.png'
-  },
-  {
-    name: 'Lyrical',
-    phase: 'Passive',
-    stack: ['python', 'opencv'],
-    description: 'AI-powered lyrics matching with human level accuracy and sub-second latency.',
-    image: '/images/lyrical.png'
-  },
-  {
-    name: 'Lyrical',
-    phase: 'Passive',
-    stack: ['python', 'opencv'],
-    description: 'AI-powered lyrics matching with human level accuracy and sub-second latency.',
-    image: '/images/lyrical.png'
+async function getRepos() {
+  const res = await fetch('https://api.github.com/users/nachiketashunya/repos', { cache: 'no-store'})
+ 
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
   }
-];
+ 
+  return res.json()
+}
 
-const ProjectsPage = () => {
+
+export default async function ProjectsPage() {
+  const repos = await getRepos();
+  const extractedData = [];
+
+  for (let item of repos) {
+    let { name, full_name, html_url, description, topics } = item; // Destructure each dictionary
+    if (topics.includes('projects')) {
+      extractedData.push({ name, full_name, html_url, description }); // Create new object with extracted data
+    }
+  }
+
   return (
     <section className='flex flex-col gap-10 text-white'>
       <h1 className='text-3xl font-bold '>
           Projects
       </h1>
-      <div className="flex flex-col h-screen overflow-y-hidden bg-dark-1">
-        <div className={`${styles.projectList} grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5`}>
-          {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+      <div className="flex flex-col bg-dark-1">
+        <div className={`flex flex-wrap gap-5`}>
+          {extractedData.map((repo, index) => (
+            <ProjectCard key={index} {...repo} />
           ))}
       </div>
     </div>
@@ -64,5 +40,3 @@ const ProjectsPage = () => {
   );
 };
 
-
-export default ProjectsPage;
