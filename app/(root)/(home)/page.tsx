@@ -6,7 +6,7 @@ import Socials from '@/components/Socials'
 
 const Home = () => {  
   const handleViewResume = () => {
-      window.open('/pdf/resume.pdf', '_blank'); // Adjust the path if necessary
+      window.open('/pdf/Resume.pdf', '_blank'); // Adjust the path if necessary
   }
 
   return (
