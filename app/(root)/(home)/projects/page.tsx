@@ -21,7 +21,7 @@ export default async function ProjectsPage() {
     let { name, full_name, html_url, description, topics } = item; // Destructure each dictionary
     if (topics.includes('projects')) {
       // Split the content by '–' and trim each resulting string
-      const points = description.split('–').map(point => point.trim());
+      const points = description.split('–').map((point: any) => point.trim());
 
       extractedData.push({ name, full_name, html_url, points }); // Create new object with extracted data
     }

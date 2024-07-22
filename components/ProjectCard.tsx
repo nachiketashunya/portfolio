@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card"
 
 
-const ProjectCard = ({ name, full_name, html_url, points }) => {
+const ProjectCard = ({ name, full_name, html_url, points } : {name: any, full_name: any, html_url: any, points: any}) => {
   const stack = ['p', 'k'];
   return (
     <Card className='px-1 py-1 flex flex-col justify-between w-full xl:max-w-[400px] rounded-[14px] cursor-pointer text-white bg-transparent border border-lime-300 overflow-x-hidden'>
@@ -25,7 +25,7 @@ const ProjectCard = ({ name, full_name, html_url, points }) => {
           <CardTitle>{name}</CardTitle>
         </Link>
         <CardDescription className='text-stone-400 text-sm'>{points && 
-          points.map((point, idx) => {
+          points.map((point: any, idx: number) => {
             return (
               <p key={idx} className={`text-sm ${idx !== 0 && 'p-2'}`}><span className='text-lime-300'>{ idx !== 0 ? '- ' : ''}</span>{point}</p>
             )
