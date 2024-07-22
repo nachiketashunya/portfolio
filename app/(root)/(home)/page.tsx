@@ -1,9 +1,19 @@
+'use client'
+
 import React from 'react'
 import { Button } from "@/components/ui/button"
 import Socials from '@/components/Socials'
 import Image from 'next/image'
+import { useState } from 'react'
 
-const Home = () => {
+const Home = () => {  
+
+
+  const handleViewResume = () => {
+      window.open('/pdf/resume.pdf', '_blank'); // Adjust the path if necessary
+    }
+
+
   return (
     <section className='flex size-full flex-col gap-10 text-white'>
         <div className='flex flex-col xl:flex-row items-center justify-between xl:pb-24'>
@@ -25,6 +35,7 @@ const Home = () => {
             </section>
             <div className='flex flex-col xl:flex-row items-center gap-8'>
               <Button 
+                onClick={handleViewResume}
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center border border-lime-300 text-black hover:text-primary hover:transition-all duration-500 bg-lime-200 hover:bg-lime-300 hover:text-black"

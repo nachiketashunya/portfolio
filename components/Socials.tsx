@@ -1,13 +1,23 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa'
 
 const Socials = ({ containerStyles, iconStyles }) => {
+    const email = "nachiketapuro@gmail.com"
+  
+    const handleCopy = () => {
+      navigator.clipboard.writeText(email).then(() => {
+        alert("Email ID copied")
+      });
+
+    };
+
     const socials = [
-        {icon: <FaGithub />, path: ""},
-        {icon: <FaLinkedinIn />, path: ""},
-        {icon: <FaEnvelope />, path: ""}
+        {icon: <FaGithub />, path: "https://github.com/nachiketashunya"},
+        {icon: <FaLinkedinIn />, path: "https://www.linkedin.com/in/nachiketa-purohit-2409551b1/"},
     ]
   return (
     <div className={containerStyles}>
@@ -18,7 +28,9 @@ const Socials = ({ containerStyles, iconStyles }) => {
             </Link>
         )
         })}
-
+        <p className={`${iconStyles} cursor-pointer`} title='Copy Email-ID' onClick={handleCopy}>
+            <FaEnvelope />
+        </p>
     </div>
   )
 }
