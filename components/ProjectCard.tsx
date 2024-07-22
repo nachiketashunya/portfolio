@@ -32,7 +32,7 @@ const ProjectCard = ({ name, full_name, html_url, points } : {name: any, full_na
         })}</CardDescription>
       </CardHeader>
       <CardContent className='flex flex-row justify-start gap-2'>
-        {stack.map((s, index) => {
+        {stack.map((s:any, index:number) => {
           return <Stack key={index} svgFile={s}/>
         })}
       </CardContent>

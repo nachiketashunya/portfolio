@@ -1,4 +1,4 @@
-const Timeline = ({ event, idx }) => {
+const Timeline = ({ event, idx }: {event: any, idx: number}) => {
     return (
         <div key={idx} className="flex md:contents">
           <div className="col-start-1 col-end-3 mr-10 md:mx-auto relative">
@@ -23,7 +23,7 @@ const Timeline = ({ event, idx }) => {
             }
             {event.activity && 
               <div className="mt-2">
-                {event.activity.map((act, idx) => {
+                {event.activity.map((act:any, idx:number) => {
                   return (
                     <div key={idx} className="mx-2 pt-1">
                       <p className="text-sm"> <span className="text-lime-300"> - </span>{act}</p>

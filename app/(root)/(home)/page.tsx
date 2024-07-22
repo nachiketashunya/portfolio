@@ -3,16 +3,11 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
 import Socials from '@/components/Socials'
-import Image from 'next/image'
-import { useState } from 'react'
 
 const Home = () => {  
-
-
   const handleViewResume = () => {
       window.open('/pdf/resume.pdf', '_blank'); // Adjust the path if necessary
-    }
-
+  }
 
   return (
     <section className='flex size-full flex-col gap-10 text-white'>

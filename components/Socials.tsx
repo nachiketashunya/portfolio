@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa'
 
-const Socials = ({ containerStyles, iconStyles }) => {
+const Socials = ({ containerStyles, iconStyles }: {containerStyles: any, iconStyles: any}) => {
     const email = "nachiketapuro@gmail.com"
   
     const handleCopy = () => {

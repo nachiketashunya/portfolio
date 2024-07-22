@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectCard from '@/components/ProjectCard';
-import styles from './projects.module.css';
 
 async function getRepos() {
   const res = await fetch('https://api.github.com/users/nachiketashunya/repos', { cache: 'no-store'})
@@ -34,7 +33,7 @@ export default async function ProjectsPage() {
       </h1>
       <div className="flex flex-col bg-dark-1">
         <div className={`flex flex-wrap gap-5`}>
-          {extractedData.map((repo, index) => (
+          {extractedData.map((repo:any, index:number) => (
             <ProjectCard key={index} {...repo} />
           ))}
       </div>
